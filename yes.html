@@ -5,13 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>💗</title>
 
+  <!-- Elegant romantic fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --bg: #fbf7fb;
-      --card: rgba(255,255,255,.82);
+      --card: rgba(255,255,255,.85);
       --border: rgba(0,0,0,.08);
-      --text: #1f1f1f;
-      --muted: rgba(31,31,31,.65);
+      --text: #2a2a2a;
+      --muted: rgba(42,42,42,.65);
       --accent: #d6336c;
       --shadow: 0 18px 50px rgba(0,0,0,.08);
     }
@@ -23,13 +26,13 @@
       min-height: 100vh;
       display: grid;
       place-items: center;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background:
         radial-gradient(900px 500px at 15% 15%, rgba(214,51,108,.10), transparent 60%),
         radial-gradient(900px 500px at 85% 10%, rgba(255,182,193,.14), transparent 60%),
         radial-gradient(900px 500px at 50% 95%, rgba(186,230,253,.12), transparent 60%),
         var(--bg);
-      padding: 18px;
+      padding: 20px;
       text-align: center;
     }
 
@@ -37,25 +40,26 @@
       width: min(560px, 92vw);
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 24px;
+      border-radius: 26px;
       box-shadow: var(--shadow);
-      padding: 22px 22px 18px;
-      backdrop-filter: blur(10px);
+      padding: 24px 24px 20px;
+      backdrop-filter: blur(12px);
     }
 
     h2{
-      margin: 12px 0 14px;
+      font-family: 'Playfair Display', serif;
+      margin: 10px 0 16px;
       color: var(--accent);
-      font-size: 26px;
-      letter-spacing: -0.02em;
-      font-weight: 700;
+      font-size: 30px;
+      letter-spacing: -0.01em;
+      font-weight: 600;
     }
 
     img{
       width: 100%;
-      border-radius: 18px;
+      border-radius: 20px;
       display: block;
-      margin: 10px 0 18px;
+      margin: 12px 0 20px;
       object-fit: cover;
     }
 
@@ -63,42 +67,54 @@
       margin: 0 auto;
       max-width: 60ch;
       color: var(--text);
-      font-size: 16.5px;
-      line-height: 1.6;
+      font-size: 17px;
+      line-height: 1.75;
     }
 
     .message p{
-      margin: 0 0 12px;
+      margin: 0 0 14px;
     }
 
-    .message p:last-child{
-      margin-bottom: 0;
+    .signature{
+      margin-top: 18px;
+      font-size: 14px;
+      color: var(--muted);
     }
 
     .back{
-      margin-top: 16px;
+      margin-top: 18px;
       display: inline-block;
       font-size: 13.5px;
       color: var(--muted);
       text-decoration: none;
-      padding: 8px 10px;
+      padding: 8px 12px;
       border-radius: 12px;
+      transition: opacity .15s ease;
     }
-    .back:hover{ opacity: 0.85; }
+
+    .back:hover{ opacity: 0.8; }
   </style>
 </head>
 
 <body>
   <div class="card">
-    <h2>YAY 💗</h2>
+    <h2>YAY💗</h2>
 
-    <!-- Upload your photo as photo.jpg in the repo -->
-    <img src="photo.jpg" alt="Us" />
+    <!-- Make sure your image file is named exactly photo.jpg -->
+    <img src="photo.jpg" alt="Us together" />
 
     <div class="message">
-      <p>Well sadly, we can’t spend Valentine’s together this year ☹️, but that's okay, I’m still smiling because it’s <em>us</em>.</p>
-      <p>I’ll wait - happily - because I want to spend not just this Valentine’s, but all of them with you.</p>
-      <p>Happy Valentine’s Day, Kalepu. I love you. See you soon.</p>
+      <p>Well we can’t celebrate Valentine’s together this year ☹️ but that’s okay.  
+      Because we’re building a life where all the next ones will be side by side.</p>
+
+      <p>I can’t wait for that.</p>
+
+      <p>Happy Valentine’s Day, Kalepu.  
+      I love you. See you soon.</p>
+    </div>
+
+    <div class="signature">
+      From Sukku - 02/14/2026
     </div>
 
     <a class="back" href="index.html">← back</a>
