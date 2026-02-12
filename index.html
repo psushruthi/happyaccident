@@ -3,130 +3,101 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Happy Accident</title>
+  <title>Happy Valentine’s Day</title>
 
   <style>
-    :root{
-      --text: #111;
-      --muted: rgba(17,17,17,.70);
-      --card: rgba(255,255,255,.72);
-      --border: rgba(17,17,17,.10);
-      --shadow: 0 16px 40px rgba(0,0,0,.08);
-    }
-
-    * { box-sizing: border-box; }
-
-    body{
+    body {
       margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
-      line-height: 1.55;
-
-      /* colorful but calm background */
-      background:
-        radial-gradient(900px 600px at 15% 10%, rgba(255, 107, 107, .35), transparent 60%),
-        radial-gradient(800px 500px at 85% 20%, rgba(255, 212, 59, .35), transparent 60%),
-        radial-gradient(900px 600px at 60% 90%, rgba(81, 207, 102, .28), transparent 60%),
-        radial-gradient(900px 600px at 10% 90%, rgba(74, 144, 226, .25), transparent 60%),
-        #fff;
-      min-height: 100vh;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      background: #fff0f5;
+      text-align: center;
     }
 
-    .wrap{
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 56px 20px 80px;
+    .card {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 90%;
     }
 
-    .card{
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      padding: 28px 26px;
+    h1 {
+      margin-bottom: 10px;
+      color: #d6336c;
     }
 
-    h1{
-      font-size: clamp(40px, 6vw, 64px);
-      letter-spacing: -0.02em;
-      margin: 0 0 10px;
-    }
-
-    .tagline{
-      margin: 0 0 18px;
+    p {
+      margin-bottom: 25px;
       font-size: 18px;
-      color: var(--muted);
-      max-width: 70ch;
     }
 
-    .quote{
-      margin: 0 0 22px;
-      font-size: 18px;
-      max-width: 70ch;
+    .buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
     }
 
-    .quote em{
-      font-style: italic;
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
     }
 
-    .note{
-      margin-top: 18px;
-      font-size: 14px;
-      color: var(--muted);
+    #yesBtn {
+      background: #ff6b81;
+      color: white;
     }
 
-    /* optional photo strip area (empty for now) */
-    .photo-strip{
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 18px;
+    #noBtn {
+      background: #dee2e6;
     }
 
-    .photo{
-      border-radius: 18px;
-      border: 1px dashed rgba(17,17,17,.22);
-      background: rgba(255,255,255,.35);
-      aspect-ratio: 4 / 3;
-      display: grid;
-      place-items: center;
-      color: rgba(17,17,17,.45);
-      font-size: 13px;
-      user-select: none;
-    }
-
-    @media (max-width: 720px){
-      .photo-strip{ grid-template-columns: 1fr; }
+    img {
+      margin-top: 20px;
+      max-width: 100%;
+      border-radius: 15px;
+      display: none;
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="card">
-      <h1>Happy Accident</h1>
+  <div class="card">
+    <h1>Happy Valentine’s Day 💗</h1>
+    <p>Will you be my Valentine?</p>
 
-      <p class="quote">
-        <em>To the man who always makes me smile - a small effort from my side to make you smile.</em>
-      </p>
-
-      <p class="tagline">
-        Hey Kalepu, happy Valentine’s Day. I built this for us - for our story.
-        Let’s keep adding to this, little by little, and make this journey beautiful. I love you.
-      </p>
-
-      <!-- Leave this here as a placeholder for images later -->
-      <div class="photo-strip" aria-label="Photo strip placeholders">
-        <div class="photo">photos soon</div>
-        <div class="photo">photos soon</div>
-        <div class="photo">photos soon</div>
-      </div>
-
-      <div class="note">
-        (I’ll keep editing this over time.)
-      </div>
+    <div class="buttons">
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
     </div>
+
+    <!-- Your photo appears after YES -->
+    <img id="photo" src="photo.jpg" alt="Us together" />
   </div>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const photo = document.getElementById("photo");
+
+    // YES → show photo
+    yesBtn.addEventListener("click", () => {
+      photo.style.display = "block";
+    });
+
+    // NO → button moves away
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * 200 - 100;
+      const y = Math.random() * 200 - 100;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+  </script>
 </body>
 </html>
