@@ -8,46 +8,52 @@
   <style>
     body {
       margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background: #fff0f5;
       text-align: center;
+      overflow: hidden;
     }
 
     .card {
       background: white;
-      padding: 40px 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      max-width: 400px;
-      width: 90%;
+      padding: 42px 28px;
+      border-radius: 22px;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.12);
+      width: min(420px, 92vw);
     }
 
     h1 {
-      margin-bottom: 10px;
+      margin: 0 0 10px;
       color: #d6336c;
+      font-size: 34px;
+      letter-spacing: -0.02em;
     }
 
     p {
-      margin-bottom: 25px;
+      margin: 0 0 22px;
       font-size: 18px;
+      color: #222;
     }
 
     .buttons {
       display: flex;
-      gap: 15px;
+      gap: 14px;
       justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
     }
 
     button {
-      padding: 10px 20px;
+      padding: 11px 22px;
       font-size: 16px;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
+      transition: transform 0.08s ease;
+      user-select: none;
     }
 
     #yesBtn {
@@ -56,14 +62,15 @@
     }
 
     #noBtn {
-      background: #dee2e6;
+      background: #e9ecef;
+      color: #111;
+      position: relative; /* enables transform moves */
     }
 
-    img {
-      margin-top: 20px;
-      max-width: 100%;
-      border-radius: 15px;
-      display: none;
+    .tiny {
+      margin-top: 18px;
+      font-size: 13px;
+      color: rgba(0,0,0,0.55);
     }
   </style>
 </head>
@@ -78,26 +85,38 @@
       <button id="noBtn">No</button>
     </div>
 
-    <!-- Your photo appears after YES -->
-    <img id="photo" src="photo.jpg" alt="Us together" />
+    <div class="tiny">P.S. “No” is not really an option 😌</div>
   </div>
 
   <script>
     const yesBtn = document.getElementById("yesBtn");
     const noBtn = document.getElementById("noBtn");
-    const photo = document.getElementById("photo");
 
-    // YES → show photo
+    // YES → go to second page
     yesBtn.addEventListener("click", () => {
-      photo.style.display = "block";
+      window.location.href = "yes.html";
     });
 
-    // NO → button moves away
-    noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * 200 - 100;
-      const y = Math.random() * 200 - 100;
+    // NO → keep moving away (works on mouse + touch)
+    function moveNoButton() {
+      const card = document.querySelector(".card");
+      const cardRect = card.getBoundingClientRect();
+      const btnRect = noBtn.getBoundingClientRect();
+
+      // random position inside the card area (with padding)
+      const padding = 18;
+      const maxX = cardRect.width - btnRect.width - padding * 2;
+      const maxY = 120; // keep it near the buttons area (not too wild)
+
+      const x = (Math.random() * maxX) - (maxX / 2);
+      const y = (Math.random() * maxY) - (maxY / 2);
+
       noBtn.style.transform = `translate(${x}px, ${y}px)`;
-    });
+    }
+
+    noBtn.addEventListener("mouseover", moveNoButton);
+    noBtn.addEventListener("mousedown", moveNoButton);
+    noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNoButton(); }, { passive: false });
   </script>
 </body>
 </html>
